@@ -1,0 +1,41 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^3.0.2",
+    "@rushstack/eslint-patch": "^1.10.4",
+    "@types/node": "^20",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@vue/eslint-config-airbnb": "^8.0.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-tailwindcss": "^3.17.5",
+    "eslint-plugin-vue": "^9.32.0",
+    "postcss": "^8.4.49",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.7.2",
+    "vue-eslint-parser": "^9.4.3"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.23",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "nuxt": "^3.15.0",
+    "vue": "^3.5.13"
+  }
+}
