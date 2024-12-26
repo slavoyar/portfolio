@@ -1,14 +1,15 @@
 <template>
   <section>
     <h2 class="mb-4 text-2xl font-semibold">Work Experience</h2>
-    <ul class="space-y-4">
+    <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
       <li
         v-for="job in workExperience"
         :key="job.company"
-        class="border-b border-gray-700 pb-4">
+        class="rounded bg-zinc-800 p-4"
+      >
         <h3 class="text-lg font-bold">{{ job.company }}</h3>
-        <p class="text-sm text-gray-400">{{ job.position }} | {{ job.period }}</p>
-        <p class="mt-2 text-gray-300">{{ job.description }}</p>
+        <p class="text-sm text-zinc-400">{{ job.position }} | {{ job.period }}</p>
+        <p class="mt-2 text-zinc-300">{{ job.description }}</p>
       </li>
     </ul>
   </section>

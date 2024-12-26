@@ -1,11 +1,11 @@
 <template>
   <section>
     <h2 class="mb-4 text-2xl font-semibold">Technologies</h2>
-    <div class="flex flex-wrap justify-center gap-4">
+    <div class="flex flex-wrap  gap-4">
       <span
         v-for="tech in technologies"
         :key="tech"
-        class="rounded bg-gray-800 px-3 py-1">
+        class="rounded bg-zinc-800 px-3 py-1">
         {{ tech }}
       </span>
     </div>
@@ -18,6 +18,7 @@ const technologies = [
   'TypeScript', 'JavaScript', 'Node.js', 'Express',
   'HTML', 'CSS', 'Tailwind CSS', 'Git',
   'GitHub', 'Gitlab', 'Docker', 'CI/CD', 'Jest',
-  'Eslint', 'Vite', 'Webpack', 'Electron'
+  'Eslint', 'Vite', 'Webpack', 'Electron',
+  'Linux', 'Arch btw'
 ]
 </script>

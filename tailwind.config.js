@@ -11,8 +11,5 @@ export default defineConfig({
     './app.vue'
   ],
   safeList: ['dark'],
-  theme: {
-    extend: {}
-  },
   plugins: []
 })

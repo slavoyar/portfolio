@@ -5,7 +5,7 @@
       <div
         v-for="project in sideProjects"
         :key="project.name"
-        class="rounded bg-gray-800 p-4 shadow"
+        class="rounded bg-zinc-800 p-4 shadow"
       >
         <h3 class="text-lg font-bold">{{ project.name }}</h3>
         <p class="mt-2 text-gray-300">{{ project.description }}</p>

@@ -11,6 +11,7 @@
   "devDependencies": {
     "@nuxt/typescript-build": "^3.0.2",
     "@rushstack/eslint-patch": "^1.10.4",
+    "@stefanobartoletti/nuxt-social-share": "^1.2.1",
     "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@vue/eslint-config-airbnb": "^8.0.0",
@@ -34,8 +35,10 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
+    "@nuxt/image": "^1.8.1",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "nuxt": "^3.15.0",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-social-sharing": "^4.0.0-alpha4"
   }
 }
