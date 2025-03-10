@@ -6,7 +6,7 @@ import WorkExperience from './components/work-experience.vue';
 </script>
 
 <template>
-  <div class="mx-auto flex flex-col gap-12 p-4 sm:w-full md:w-11/12 lg:w-9/12">
+  <div class="mx-auto flex flex-col gap-6 p-4 sm:w-full md:w-11/12 lg:w-9/12">
     <MainInfo />
     <TechnologiesTags />
     <WorkExperience />
