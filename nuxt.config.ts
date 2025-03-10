@@ -7,5 +7,17 @@ export default defineNuxtConfig({
     '@stefanobartoletti/nuxt-social-share',
     '@nuxt/image'
   ],
-  compatibilityDate: '2024-12-25'
+  compatibilityDate: '2025-03-10',
+  app: {
+    head: {
+      title: 'Yaroslav Zaprudskii',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Yaroslav Zaprudskii Portfolio Website' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
+
+  }
 })
