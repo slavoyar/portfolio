@@ -32,8 +32,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const title = ref('Full-Stack Developer')
-// eslint-disable-next-line max-len
-const description = ref('Passionate full-stack developer with 3 years of experience in building scalable web applications. Proficient in Express, Vue, and React, with expertise in state management using Zustand, Pinia, and Vuex. Experienced in developing cross-platform applications with Electron and strong in TypeScript, dedicated to creating intuitive user interfaces and robust backend systems. Committed to delivering high-quality, performant solutions that enhance user experience and drive business growth.')
+const title = ref('Full-Stack Developer');
 
+const description = ref(
+  'Passionate full-stack developer with 3 years of experience in building scalable web applications. Proficient in Express, Vue, and React, with expertise in state management using Zustand, Pinia, and Vuex. Experienced in developing cross-platform applications with Electron and strong in TypeScript, dedicated to creating intuitive user interfaces and robust backend systems. Committed to delivering high-quality, performant solutions that enhance user experience and drive business growth.'
+);
 </script>

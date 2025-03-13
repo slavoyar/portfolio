@@ -1,15 +1,7 @@
-// tailwind.config.js
-import { defineConfig } from 'tailwindcss'
-
-export default defineConfig({
+/** @type {import('tailwindcss').Config} */
+export default {
   darkMode: ['selector', '[data-theme="dark"]'],
-  content: [
-    './components/**/*.{vue,js,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './app.vue'
-  ],
+  content: ['./components/**/*.{vue,js,ts}', './app.vue'],
   safeList: ['dark'],
-  plugins: []
-})
+  plugins: [],
+};
