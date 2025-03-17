@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="mb-4 text-2xl font-semibold">Technologies</h2>
+    <h2 class="mb-4 text-2xl font-semibold">{{ $t('technologies') }}</h2>
     <div class="flex flex-wrap gap-4">
       <span v-for="tech in technologies" :key="tech" class="rounded bg-zinc-800 px-3 py-1">
         {{ tech }}
