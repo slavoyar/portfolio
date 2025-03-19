@@ -4,4 +4,31 @@
   "role": "Full-Stack Developer",
   "description": "Passionate full-stack developer with 3 years of experience in building scalable web applications. Proficient in Express, Vue, and React, with expertise in state management using Zustand, Pinia, and Vuex. Experienced in developing cross-platform applications with Electron and strong in TypeScript, dedicated to creating intuitive user interfaces and robust backend systems. Committed to delivering high-quality, performant solutions that enhance user experience and drive business growth.",
   "technologies": "Technologies",
+  "work-experience": {
+    "title": "Work Experience",
+    "metran0": {
+      "name": "Metran",
+      "position": "Full-Stack Developer",
+      "period": "February 2022 - October 2022",
+      "description": "Participated in developing an interface for interacting with sensors using TypeScript and Vue 3. Contributed to the development of data processing logic for sensor inputs (HART). Wrote tests using Jest."
+    },
+    "baltInfoCom": {
+      "name": "BaltInfoCom",
+      "position": "Full-Stack Developer",
+      "period": "October 2022 - November 2023",
+      "description": " Developed web applications using Vue 2, TypeScript, and Vuex. Refactored legacy code. Designed interfaces for new application features. Created component tests using the Jest framework. Collaborated closely with the backend team."
+    },
+    "infowise": {
+      "name": "Infowise",
+      "position": "Full-Stack Developer",
+      "period": "November 2023 - September 2024",
+      "description": "Maintained a Vue 3 component library.Developed a project from scratch using Vue 3 and TypeScript.Configured the application: ESLint, Vite, Vitest, and Tailwind CSS. Conducted application testing using Vitest."
+    },
+    "metran": {
+      "name": "Metran, Industrial Group JSC",
+      "position": "Full-Stack Developer",
+      "period": "September 2024 - present",
+      "description": "Developed a user interface for an Electron application to interact with sensors using Vue 3 and TypeScript. Maintained a component library, now utilizing Tailwind CSS for styling. Enhanced sensor data processing logic. Configured the project using Vite as the bundler. Wrote tests for components and data logic using Jest."
+    }
+  }
 }
