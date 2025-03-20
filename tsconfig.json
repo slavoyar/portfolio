@@ -1,16 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    },
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "types": ["@nuxtjs/i18n", "@nuxt/types", "@nuxtjs/tailwindcss"]
-  },
-  "exclude": ["node_modules", ".nuxt", "dist"]
+  "extends": "./.nuxt/tsconfig.json"
 }

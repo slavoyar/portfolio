@@ -8,8 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-
 import MainInfo from './components/main-info.vue';
 import SideProjects from './components/side-projects.vue';
 import TechnologiesTags from './components/technologies-tags.vue';
