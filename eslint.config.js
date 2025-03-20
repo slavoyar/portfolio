@@ -11,10 +11,18 @@ export default typescriptEslint.config(
   ...typescriptEslint.configs.recommended,
   ...eslintPluginVue.configs['flat/recommended'],
   {
-    files: ['*.vue', '**/*.vue'],
+    files: ['*.vue', '**/*.vue', '*.ts', '**/*.ts', '*.js', '**/*.js'],
     languageOptions: {
       parserOptions: {
         parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.vue'],
+      },
+      globals: {
+        console: 'readonly',
+        window: 'readonly',
+        document: 'readonly',
+        useI18n: 'readonly',
+        useHead: 'readonly',
       },
     },
   },
