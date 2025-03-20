@@ -8,7 +8,7 @@ type Config = I18nOptions<{ message: MessageSchema }, 'en' | 'ru'>;
 
 export default defineI18nConfig<Config>(() => ({
   legacy: false,
-  locale: 'en',
+  locale: 'ru',
   messages: {
     en,
     ru,

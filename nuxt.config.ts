@@ -6,14 +6,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-03-10',
   app: {
     head: {
-      title: 'Yaroslav Zaprudskii',
-      meta: [{ hid: 'description', name: 'description', content: 'Yaroslav Zaprudskii Portfolio Website' }],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
   },
   i18n: {
     strategy: 'no_prefix',
-    defaultLocale: 'en',
+    defaultLocale: 'ru',
     locales: [
       {
         name: 'English',

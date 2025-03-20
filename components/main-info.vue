@@ -2,7 +2,16 @@
   <div class="flex flex-col gap-2">
     <div class="flex justify-between gap-4">
       <h1 class="text-4xl font-bold">{{ $t('name') }}</h1>
-      <ContactInfo />
+      <div class="flex">
+        <ContactInfo />
+        <button
+          class="w-10 rounded p-2 uppercase hover:bg-zinc-700"
+          :title="$t('change-language')"
+          @click="setLocale(locale === 'en' ? 'ru' : 'en')"
+        >
+          {{ locale }}
+        </button>
+      </div>
     </div>
     <div class="overflow-hidden rounded-lg bg-zinc-800 shadow-lg">
       <div class="md:flex">
@@ -28,3 +37,7 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { setLocale, locale } = useI18n();
+</script>

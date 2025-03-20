@@ -8,8 +8,22 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
 import MainInfo from './components/main-info.vue';
 import SideProjects from './components/side-projects.vue';
 import TechnologiesTags from './components/technologies-tags.vue';
 import WorkExperience from './components/work-experience.vue';
+
+const { t } = useI18n();
+
+useHead({
+  title: () => t('header.title'),
+  meta: [
+    {
+      name: 'description',
+      content: () => t('header.subtitle'),
+    },
+  ],
+});
 </script>

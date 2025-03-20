@@ -22,6 +22,7 @@ export default typescriptEslint.config(
         window: 'readonly',
         document: 'readonly',
         useI18n: 'readonly',
+        useHead: 'readonly',
       },
     },
   },

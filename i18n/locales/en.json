@@ -1,5 +1,9 @@
 {
-  "title": "Yaroslav's Portfolio",
+  "header": {
+    "title": "Yaroslav Zaprudskii",
+    "subtitle": "Yaroslav Zaprudskii - Full-Stack Developer"
+  },
+  "change-language": "Change language",
   "name": "Yaroslav Zaprudskii",
   "role": "Full-Stack Developer",
   "description": "Passionate full-stack developer with 3 years of experience in building scalable web applications. Proficient in Express, Vue, and React, with expertise in state management using Zustand, Pinia, and Vuex. Experienced in developing cross-platform applications with Electron and strong in TypeScript, dedicated to creating intuitive user interfaces and robust backend systems. Committed to delivering high-quality, performant solutions that enhance user experience and drive business growth.",
@@ -14,21 +18,36 @@
     },
     "baltInfoCom": {
       "name": "BaltInfoCom",
-      "position": "Full-Stack Developer",
+      "position": "Frontend Developer",
       "period": "October 2022 - November 2023",
       "description": " Developed web applications using Vue 2, TypeScript, and Vuex. Refactored legacy code. Designed interfaces for new application features. Created component tests using the Jest framework. Collaborated closely with the backend team."
     },
     "infowise": {
       "name": "Infowise",
-      "position": "Full-Stack Developer",
+      "position": "Frontend Developer",
       "period": "November 2023 - September 2024",
-      "description": "Maintained a Vue 3 component library.Developed a project from scratch using Vue 3 and TypeScript.Configured the application: ESLint, Vite, Vitest, and Tailwind CSS. Conducted application testing using Vitest."
+      "description": "Maintained a Vue 3 component library.Developed a project from scratch using Vue 3 and TypeScript. Configured the application: ESLint, Vite, Vitest, and Tailwind CSS. Conducted application testing using Vitest."
     },
     "metran": {
       "name": "Metran, Industrial Group JSC",
       "position": "Full-Stack Developer",
       "period": "September 2024 - present",
       "description": "Developed a user interface for an Electron application to interact with sensors using Vue 3 and TypeScript. Maintained a component library, now utilizing Tailwind CSS for styling. Enhanced sensor data processing logic. Configured the project using Vite as the bundler. Wrote tests for components and data logic using Jest."
+    }
+  },
+  "side-projects": {
+    "title": "Side Projects",
+    "view-project": "View project",
+    "lulight": {
+      "name": "Lulight",
+      "description": "Online shop for Lulight brand clothing",
+      "url": "https://lulight.ru"
+    },
+    "chinese-laoshi": {
+      "name": "Chinese Laoshi",
+      "description": "An application for learning Chinese using a flashcard method.",
+      "github": "https://github.com/slavoyar/ChineseLaoshi",
+      "url": "https://chineselaoshi.slavoyar.tech"
     }
   }
 }
