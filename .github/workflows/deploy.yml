@@ -45,6 +45,6 @@ jobs:
             docker pull ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
             docker stop ${{ env.IMAGE_NAME }} || true
             docker rm ${{ env.IMAGE_NAME }} || true
-            docker run -d --name ${{ env.IMAGE_NAME }} --network $NETWORK --label VIRTUAL_HOST=${{ env.DOMAIN }} --label LETSENCRYPT_HOST=${{ env.DOMAIN }} --label LETSENCRYPT_EMAIL=${{ secrets.LETSENCRYPT_EMAIL }} -p 4000:3000 --restart=always ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+            docker run -d --name ${{ env.IMAGE_NAME }} --network $NETWORK --env VIRTUAL_HOST=${{ env.DOMAIN }} --env LETSENCRYPT_HOST=${{ env.DOMAIN }} --env LETSENCRYPT_EMAIL=${{ secrets.LETSENCRYPT_EMAIL }} --restart=always ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
             docker image prune -f
           EOF
