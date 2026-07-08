@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Color — warm near-black surface, coral accent (restrained) */
+  --color-bg: oklch(0.11 0.009 43);
+  --color-surface: oklch(0.16 0.012 43);
+  --color-ink: oklch(0.94 0.006 43);
+  --color-body: oklch(0.82 0.01 43);
+  --color-muted: oklch(0.67 0.012 43);
+  --color-faint: oklch(0.56 0.011 43);
+  --color-border: oklch(0.25 0.013 43);
+  --color-primary: oklch(0.74 0.13 43);
+  --color-primary-hover: oklch(0.8 0.15 43);
+
+  /* Spacing */
+  --space-section: clamp(3rem, 5vw + 1rem, 5.5rem);
+  --space-entry: clamp(1.75rem, 3vw, 2.5rem);
+  --space-header: clamp(1rem, 1.5vw + 0.25rem, 1.375rem);
+  --max-prose: 65ch;
+
+  /* Type scale */
+  --text-display: clamp(1.75rem, 2.5vw + 1rem, 2.75rem);
+  --text-heading: clamp(1.25rem, 1.5vw + 0.75rem, 1.625rem);
+  --text-subheading: 1.125rem;
+  --text-body: 1rem;
+  --text-body-lg: 1.125rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.8125rem;
+
+  --leading-display: 1.12;
+  --leading-heading: 1.22;
+  --leading-body: 1.65;
+  --leading-snug: 1.35;
+
+  --tracking-display: -0.025em;
+}
+
+@layer base {
+  body {
+    @apply bg-bg font-body text-body text-copy antialiased;
+    font-kerning: normal;
+    font-optical-sizing: auto;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-ink;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply font-display text-heading font-semibold text-ink;
+    text-wrap: balance;
+  }
+
+  .section-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-entry);
+  }
+
+  .header-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-header);
+  }
+
+  .header-intro__bio {
+    @apply max-w-none text-pretty text-body-lg text-copy;
+  }
+
+  .text-role {
+    @apply font-body text-subheading text-muted;
+  }
+
+  .text-prose {
+    @apply max-w-[var(--max-prose)] text-pretty text-body text-copy;
+  }
+
+  .text-prose-lg {
+    @apply max-w-[var(--max-prose)] text-pretty text-body-lg text-copy;
+  }
+
+  .text-meta {
+    @apply text-sm leading-snug text-faint;
+  }
+
+  .text-caption {
+    @apply text-sm text-muted;
+  }
+
+  .text-link {
+    @apply text-sm font-medium text-primary transition-colors duration-150;
+  }
+
+  .text-link:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .border-divider {
+    border-color: var(--color-border);
+  }
+
+  .interactive-surface {
+    @apply rounded transition-colors duration-150;
+  }
+
+  .interactive-surface:hover {
+    background-color: var(--color-surface);
+  }
+
+  .focus-ring {
+    @apply outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    outline-color: var(--color-primary);
+  }
+
+  .header-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-width: 0;
+  }
+
+  .header-identity__masthead {
+    @apply flex items-start justify-between gap-4;
+  }
+
+  .header-identity .contact-list {
+    margin-top: clamp(0.75rem, 1.5vw, 1rem);
+    width: 100%;
+  }
+
+  .locale-toggle {
+    @apply inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-surface px-3 text-xs font-semibold uppercase tracking-wide text-muted transition-colors duration-150 ease-out;
+  }
+
+  .locale-toggle:hover {
+    @apply bg-bg text-primary;
+  }
+
+  .locale-toggle:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+  }
+
+  .locale-toggle:active {
+    @apply bg-surface text-primary;
+  }
+
+  .contact-list {
+    @apply min-w-0 max-w-full;
+  }
+
+  .contact-list__items {
+    @apply m-0 flex list-none flex-col gap-0.5 p-0 md:flex-row md:flex-wrap md:gap-x-6 md:gap-y-1;
+  }
+
+  .contact-list__link {
+    @apply inline-flex min-h-11 w-fit max-w-full min-w-0 items-center gap-2.5 rounded-md px-2 py-2 text-copy transition-colors duration-150 ease-out;
+  }
+
+  .contact-list__link svg {
+    @apply shrink-0 text-muted;
+  }
+
+  .contact-list__link:hover,
+  .contact-list__link:focus-visible,
+  .contact-list__link:active {
+    @apply bg-surface text-primary;
+  }
+
+  .contact-list__link:hover svg,
+  .contact-list__link:focus-visible svg,
+  .contact-list__link:active svg {
+    @apply text-primary;
+  }
+
+  .contact-list__link:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+  }
+
+  .contact-list__label {
+    @apply text-sm select-text;
+    overflow-wrap: anywhere;
+  }
+}

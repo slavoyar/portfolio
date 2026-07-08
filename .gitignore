@@ -1,5 +1,3 @@
 node_modules/
-.nuxt/
-.output/
+.next/
 dist/
-dist-static/
