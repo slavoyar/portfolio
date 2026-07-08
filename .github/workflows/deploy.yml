@@ -40,11 +40,24 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
 
       - name: Deploy on server
+        env:
+          IMAGE: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+          DOMAIN: ${{ secrets.DOMAIN }}
+          NETWORK: ${{ secrets.NETWORK }}
+          LETSENCRYPT_EMAIL: ${{ secrets.LETSENCRYPT_EMAIL }}
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
-            docker pull ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << EOF
+            set -e
+            docker pull "${IMAGE}"
             docker stop ${{ env.IMAGE_NAME }} || true
             docker rm ${{ env.IMAGE_NAME }} || true
-            docker run -d --name ${{ env.IMAGE_NAME }} --network $NETWORK --env VIRTUAL_HOST=${{ env.DOMAIN }} --env LETSENCRYPT_HOST=${{ env.DOMAIN }} --env LETSENCRYPT_EMAIL=${{ secrets.LETSENCRYPT_EMAIL }} --restart=always ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+            docker run -d \
+              --name ${{ env.IMAGE_NAME }} \
+              --network "${NETWORK}" \
+              --env "VIRTUAL_HOST=${DOMAIN}" \
+              --env "LETSENCRYPT_HOST=${DOMAIN}" \
+              --env "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}" \
+              --restart=always \
+              "${IMAGE}"
             docker image prune -f
           EOF
