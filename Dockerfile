@@ -3,19 +3,22 @@ FROM node:24-alpine AS builder
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm install --frozen-lockfile
+RUN npm ci
 
 COPY . .
 RUN npm run build
 
-# Production Image
 FROM node:24-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app/.output .output
+ENV NODE_ENV=production
+ENV PORT=80
+ENV HOSTNAME=0.0.0.0
 
-ENV NITRO_PORT=80
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
 
 EXPOSE 80
-CMD ["node", ".output/server/index.mjs"]
+CMD ["node", "server.js"]
