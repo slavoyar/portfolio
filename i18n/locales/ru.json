@@ -40,6 +40,13 @@
   "projects": {
     "title": "Проекты",
     "view-project": "Посмотреть проект",
+    "view-github": "GitHub",
+    "chinese-laoshi": {
+      "name": "Chinese Laoshi",
+      "description": "Приложение для изучения китайского с интерактивными карточками — режим рукописного ввода и угадывания перевода. React, TypeScript и Go; работает на телефоне, планшете и десктопе.",
+      "url": "https://chineselaoshi.slavoyar.tech",
+      "github": "https://github.com/slavoyar/ChineseLaoshi"
+    },
     "lulight": {
       "name": "Продакшн e-commerce платформа (бренд одежды — Lulight)",
       "description": "Разработал full-stack интернет-магазин с нуля на Next.js: 200+ SKU, 50+ заказов в месяц. Интегрировал платёжный шлюз с webhook-обработкой для подтверждения заказов, сократив время ручной обработки заказов на 80%.",

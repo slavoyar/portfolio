@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-const projects = ['lulight'] as const;
+const projects = ['chinese-laoshi', 'lulight'] as const;
 
 export default function SideProjects() {
   const t = useTranslations();
@@ -27,6 +27,11 @@ export default function SideProjects() {
               <a href={t(`projects.${project}.url`)} className='text-link' target='_blank' rel='noopener noreferrer'>
                 {t('projects.view-project')}
               </a>
+              {t.has(`projects.${project}.github`) && (
+                <a href={t(`projects.${project}.github`)} className='text-link' target='_blank' rel='noopener noreferrer'>
+                  {t('projects.view-github')}
+                </a>
+              )}
             </div>
           </li>
         ))}
