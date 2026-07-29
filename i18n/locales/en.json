@@ -40,6 +40,13 @@
   "projects": {
     "title": "Projects",
     "view-project": "View project",
+    "view-github": "GitHub",
+    "chinese-laoshi": {
+      "name": "Chinese Laoshi",
+      "description": "Mandarin learning app with interactive flashcards — handwriting practice and translation guessing. Built with React, TypeScript, and Go; works on phone, tablet, and desktop.",
+      "url": "https://chineselaoshi.slavoyar.tech",
+      "github": "https://github.com/slavoyar/ChineseLaoshi"
+    },
     "lulight": {
       "name": "Production E-Commerce Platform (Clothing Brand - Lulight)",
       "description": "Built a full-stack online store from scratch using Next.js, handling 200+ SKUs and processing 50+ orders/month. Integrated payment gateway with webhook handling for order confirmation, reducing manual order processing time by 80%.",
