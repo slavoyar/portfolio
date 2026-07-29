@@ -28,7 +28,12 @@ export default function SideProjects() {
                 {t('projects.view-project')}
               </a>
               {t.has(`projects.${project}.github`) && (
-                <a href={t(`projects.${project}.github`)} className='text-link' target='_blank' rel='noopener noreferrer'>
+                <a
+                  href={t(`projects.${project}.github`)}
+                  className='text-link'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
                   {t('projects.view-github')}
                 </a>
               )}
