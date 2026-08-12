@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 env:
@@ -11,25 +14,39 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
-  build-and-deploy:
-    if: github.ref == 'refs/heads/main'
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npm run build
+
+  deploy:
+    needs: lint
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Log in to container registry
-        uses: docker/login-action@v3
+      - uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+      - uses: docker/build-push-action@v6
         with:
           context: .
           push: true
@@ -38,16 +55,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
 
       - name: Trigger Coolify deploy
-        env:
-          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
-          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
-        run: |
-          set -euo pipefail
-          WEBHOOK="${COOLIFY_WEBHOOK}"
-          case "${WEBHOOK}" in
-            *\?*) WEBHOOK="${WEBHOOK}&force=true" ;;
-            *) WEBHOOK="${WEBHOOK}?force=true" ;;
-          esac
-          curl --fail --silent --show-error \
-            --request GET "${WEBHOOK}" \
-            --header "Authorization: Bearer ${COOLIFY_TOKEN}"
+        run: >
+          curl --fail --silent --show-error
+          --request GET "${{ secrets.COOLIFY_WEBHOOK }}"
+          --header "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
