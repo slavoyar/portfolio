@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-const jobNames = ['metran', 'infowise', 'baltInfoCom', 'metran0'] as const;
+import { JOB_IDS } from '@/lib/portfolio';
 
 export default function WorkExperience() {
   const t = useTranslations();
@@ -12,7 +12,7 @@ export default function WorkExperience() {
       </h2>
 
       <ol className='flex flex-col'>
-        {jobNames.map((job, index) => {
+        {JOB_IDS.map((job, index) => {
           const description = t(`work-experience.${job}.description`);
 
           return (

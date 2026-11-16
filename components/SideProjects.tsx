@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-const projects = ['chinese-laoshi', 'lulight'] as const;
+import { PROJECT_IDS } from '@/lib/portfolio';
 
 export default function SideProjects() {
   const t = useTranslations();
@@ -12,7 +12,7 @@ export default function SideProjects() {
       </h2>
 
       <ul className='flex flex-col'>
-        {projects.map((project, index) => (
+        {PROJECT_IDS.map((project, index) => (
           <li
             key={project}
             className={`flex flex-col gap-4 py-[var(--space-entry)] sm:flex-row sm:items-start sm:justify-between sm:gap-12 ${

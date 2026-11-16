@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl';
 import photo from '@/assets/main.webp';
 
 import { ContactLinks } from './ContactLinks';
-import { LanguageToggleButton } from './HeaderActions';
 
 export default function MainInfo() {
   const t = useTranslations();
@@ -14,7 +13,6 @@ export default function MainInfo() {
       <div className='header-identity'>
         <div className='header-identity__masthead'>
           <h1 className='min-w-0 flex-1 text-display font-bold'>{t('name')}</h1>
-          <LanguageToggleButton />
         </div>
         <p className='text-role mt-2'>{t('role')}</p>
         <p className='text-caption mt-1'>{t('location')}</p>

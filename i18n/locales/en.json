@@ -10,6 +10,12 @@
   "location": "Based in Yerevan, Armenia — Available for Remote Contracts",
   "description": "Full Stack Engineer with 4+ years of experience building scalable web applications using TypeScript, Node.js, React, and Vue.js ecosystems. Specialized in monorepo architecture, real-time communication (WebSockets), and legacy system modernization. Passionate about clean code, type safety, and developer tooling.",
   "technologies": "Skills",
+  "skill-groups": {
+    "aside": "Stack",
+    "frontend": "Frontend",
+    "backend": "Backend & data",
+    "platform": "Platform"
+  },
   "work-experience": {
     "title": "Professional Experience",
     "metran": {
@@ -58,5 +64,28 @@
     "degree": "Bachelor's degree, Computer Science",
     "school": "Saint Petersburg State University of Aerospace and Instrumentation",
     "year": "2022"
+  },
+  "download-resume": "Download resume",
+  "download-resume-short": "Resume",
+  "resume": {
+    "title": "Resume",
+    "print-hint": "Use your browser print dialog to save as PDF."
+  },
+  "chapters": {
+    "intro": "Intro",
+    "work": "Work",
+    "projects": "Projects",
+    "skills": "Skills",
+    "education": "Education"
+  },
+  "views": {
+    "label": "Preview",
+    "sector": "Sector",
+    "sector-pixel": "Pixel"
+  },
+  "a11y": {
+    "skip-to-content": "Skip to content",
+    "reading-progress": "Reading progress",
+    "opens-new-tab": "opens in a new tab"
   }
 }
