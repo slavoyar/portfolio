@@ -15,8 +15,8 @@ export default {
         'primary-hover': 'var(--color-primary-hover)',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
-        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-sector-display)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-sector-body)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         display: [

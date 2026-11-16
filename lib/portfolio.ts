@@ -54,7 +54,7 @@ export const TECHNOLOGIES = SKILL_GROUPS.flatMap((group) => group.items);
 export const VIEW_IDS = ['sector', 'sector-pixel'] as const;
 export type ViewId = (typeof VIEW_IDS)[number];
 
-export const DEFAULT_VIEW: ViewId = 'sector';
+export const DEFAULT_VIEW: ViewId = 'sector-pixel';
 
 export function isViewId(value: string | undefined | null): value is ViewId {
   return VIEW_IDS.includes(value as ViewId);

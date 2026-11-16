@@ -1,37 +1,26 @@
 import type { Metadata } from 'next';
-import { Golos_Text, JetBrains_Mono, Onest, Pixelify_Sans, Source_Sans_3, Unbounded } from 'next/font/google';
+import { Golos_Text, JetBrains_Mono, Pixelify_Sans, Unbounded } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 
 import { routing } from '@/i18n/routing';
 
-const display = Onest({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-display',
-  weight: ['500', '600', '700'],
-  display: 'swap',
-});
-
-const body = Source_Sans_3({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-body',
-  weight: ['400', '500', '600'],
-  display: 'swap',
-});
-
+/** Sector (non-pixel) display — not preloaded; default view is pixel. */
 const sectorDisplay = Unbounded({
   subsets: ['latin', 'cyrillic'],
   variable: '--font-sector-display',
-  weight: ['500', '600', '700'],
+  weight: ['600', '700'],
   display: 'swap',
+  preload: false,
 });
 
 const sectorBody = Golos_Text({
   subsets: ['latin', 'cyrillic'],
   variable: '--font-sector-body',
-  weight: ['400', '500', '600'],
+  weight: ['400', '600'],
   display: 'swap',
+  preload: false,
 });
 
 const mono = JetBrains_Mono({
@@ -44,7 +33,7 @@ const mono = JetBrains_Mono({
 const pixel = Pixelify_Sans({
   subsets: ['latin', 'cyrillic'],
   variable: '--font-pixel',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '700'],
   display: 'swap',
 });
 
@@ -82,14 +71,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={[
-        display.variable,
-        body.variable,
-        sectorDisplay.variable,
-        sectorBody.variable,
-        mono.variable,
-        pixel.variable,
-      ].join(' ')}
+      className={[sectorDisplay.variable, sectorBody.variable, mono.variable, pixel.variable].join(' ')}
     >
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
