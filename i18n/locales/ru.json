@@ -78,11 +78,6 @@
     "skills": "Навыки",
     "education": "Образование"
   },
-  "views": {
-    "label": "Превью",
-    "sector": "Сектор",
-    "sector-pixel": "Пиксель"
-  },
   "a11y": {
     "skip-to-content": "К содержанию",
     "reading-progress": "Прогресс чтения",

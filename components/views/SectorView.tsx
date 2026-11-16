@@ -10,7 +10,7 @@ import { useActiveChapter } from '@/hooks/useActiveChapter';
 import { useInViewChapters } from '@/hooks/useInViewChapters';
 import { usePortfolioContent } from '@/hooks/usePortfolioContent';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
-import { CHAPTER_FIELDS, CHAPTER_IDS, type ChapterId, type SectorVariant, yearFromPeriod } from '@/lib/portfolio';
+import { CHAPTER_FIELDS, CHAPTER_IDS, type ChapterId, yearFromPeriod } from '@/lib/portfolio';
 
 import { SectorBackdrop } from './SectorBackdrop';
 import { SectorLowerThird } from './SectorLowerThird';
@@ -20,10 +20,6 @@ const GlowCursor = dynamic(() => import('@/components/effects/GlowCursor'), { ss
 const SectorBelowFold = dynamic(() => import('./SectorBelowFold').then((m) => ({ default: m.SectorBelowFold })), {
   loading: () => null,
 });
-
-type SectorViewProps = {
-  variant?: SectorVariant;
-};
 
 function labelForChapter(id: string, content: ReturnType<typeof usePortfolioContent>) {
   if (id === 'intro') {
@@ -50,13 +46,12 @@ function scrollToChapter(id: string) {
   el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
 }
 
-export function SectorView({ variant = 'base' }: SectorViewProps) {
+export function SectorView() {
   const content = usePortfolioContent();
   const chapterIds = useMemo(() => [...CHAPTER_IDS], []);
   const active = useActiveChapter(chapterIds);
   const seen = useInViewChapters(chapterIds);
   const progress = useScrollProgress();
-  const withPixel = variant === 'pixel';
   const progressPct = Math.round(progress * 100);
   const [barLabel, setBarLabel] = useState(content.role);
   const [cursorGlow, setCursorGlow] = useState(false);
@@ -105,7 +100,7 @@ export function SectorView({ variant = 'base' }: SectorViewProps) {
   const total = String(CHAPTER_IDS.length).padStart(2, '0');
 
   return (
-    <div className={['sector-view', withPixel ? 'sector-view--pixel' : ''].filter(Boolean).join(' ')}>
+    <div className='sector-view'>
       {cursorGlow ? (
         <div className='sector-glow-layer' aria-hidden='true'>
           <GlowCursor
@@ -189,11 +184,7 @@ export function SectorView({ variant = 'base' }: SectorViewProps) {
             <span />
           </div>
           <div className='sector-stage__frame'>
-            <div
-              className={['sector-stage__media', withPixel ? 'sector-stage__media--pixel' : '']
-                .filter(Boolean)
-                .join(' ')}
-            >
+            <div className='sector-stage__media sector-stage__media--pixel'>
               <div className='sector-stage__photo-frame'>
                 <Image
                   src={photo}
@@ -203,7 +194,7 @@ export function SectorView({ variant = 'base' }: SectorViewProps) {
                   fetchPriority='high'
                   sizes='(max-width: 768px) 72vw, 384px'
                 />
-                {withPixel ? <div className='sector-stage__photo-scan' aria-hidden='true' /> : null}
+                <div className='sector-stage__photo-scan' aria-hidden='true' />
               </div>
               <div className='sector-stage__photo-glow' aria-hidden='true' />
               <div className='sector-stage__stats' aria-hidden='true'>

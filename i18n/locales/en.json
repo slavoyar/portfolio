@@ -78,11 +78,6 @@
     "skills": "Skills",
     "education": "Education"
   },
-  "views": {
-    "label": "Preview",
-    "sector": "Sector",
-    "sector-pixel": "Pixel"
-  },
   "a11y": {
     "skip-to-content": "Skip to content",
     "reading-progress": "Reading progress",
