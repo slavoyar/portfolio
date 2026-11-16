@@ -7,6 +7,9 @@ const watchIgnored = ['**/.cursor/**', '**/.impeccable/**', '**/node_modules/**'
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  experimental: {
+    optimizePackageImports: ['next-intl'],
+  },
   webpack: (config: { watchOptions?: { ignored?: string[] } }, { dev }: { dev: boolean }) => {
     if (dev) {
       config.watchOptions = {

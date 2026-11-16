@@ -10,6 +10,12 @@
   "location": "Ереван, Армения — доступен для удалённых контрактов",
   "description": "Full Stack инженер с более чем 4 годами опыта в разработке масштабируемых веб-приложений на TypeScript, Node.js, React и Vue.js. Специализируюсь на монорепозиторной архитектуре, real-time коммуникации (WebSockets) и модернизации legacy-систем. Увлечён чистым кодом, типобезопасностью и инструментами для разработчиков.",
   "technologies": "Навыки",
+  "skill-groups": {
+    "aside": "Стек",
+    "frontend": "Frontend",
+    "backend": "Backend и данные",
+    "platform": "Платформа"
+  },
   "work-experience": {
     "title": "Профессиональный опыт",
     "metran": {
@@ -58,5 +64,28 @@
     "degree": "Бакалавр, Computer Science",
     "school": "ГУАП — Санкт-Петербургский государственный университет аэрокосмического приборостроения",
     "year": "2022"
+  },
+  "download-resume": "Скачать резюме",
+  "download-resume-short": "Резюме",
+  "resume": {
+    "title": "Резюме",
+    "print-hint": "Сохраните как PDF через диалог печати браузера."
+  },
+  "chapters": {
+    "intro": "Старт",
+    "work": "Опыт",
+    "projects": "Проекты",
+    "skills": "Навыки",
+    "education": "Образование"
+  },
+  "views": {
+    "label": "Превью",
+    "sector": "Сектор",
+    "sector-pixel": "Пиксель"
+  },
+  "a11y": {
+    "skip-to-content": "К содержанию",
+    "reading-progress": "Прогресс чтения",
+    "opens-new-tab": "откроется в новой вкладке"
   }
 }
