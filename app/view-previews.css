@@ -9,6 +9,7 @@ html:has(.sector-view) {
 }
 
 .sector-view {
+  --sector-pixel: var(--font-pixel), ui-monospace, monospace;
   min-height: 100dvh;
   padding-bottom: var(--sector-bar-clearance);
   overflow-x: clip;
@@ -16,7 +17,8 @@ html:has(.sector-view) {
     radial-gradient(ellipse 80% 40% at 80% 0%, color-mix(in oklab, var(--sector-accent) 12%, transparent), transparent),
     var(--sector-bg);
   color: var(--sector-ink);
-  font-family: var(--font-sector-body), system-ui, sans-serif;
+  font-family: var(--sector-pixel);
+  letter-spacing: 0.02em;
 }
 
 .sector-glow-layer {
@@ -66,8 +68,7 @@ html:has(.sector-view) {
 .sector-view h1,
 .sector-view h2,
 .sector-view h3 {
-  font-family: var(--font-sector-display), system-ui, sans-serif;
-  letter-spacing: -0.03em;
+  font-family: var(--sector-pixel);
   color: var(--sector-ink);
 }
 
@@ -226,7 +227,7 @@ html:has(.sector-view) {
 
 .sector-stage__index {
   margin: 0 0 0.75rem;
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-size: 0.8125rem;
   color: var(--sector-accent);
   letter-spacing: 0.04em;
@@ -234,7 +235,7 @@ html:has(.sector-view) {
 
 .sector-stage__giant {
   margin: 0;
-  font-family: var(--font-sector-display), system-ui, sans-serif;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-size: clamp(4rem, 14vw, 8rem);
   line-height: 0.85;
   color: color-mix(in oklab, var(--sector-accent) 28%, transparent);
@@ -392,7 +393,7 @@ html:has(.sector-view) {
   min-height: 9rem;
   display: grid;
   place-items: center;
-  font-family: var(--font-sector-display), system-ui, sans-serif;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-size: 3.5rem;
   overflow: hidden;
 }
@@ -444,7 +445,7 @@ html:has(.sector-view) {
 .sector-skill-group h3 {
   margin: 0 0 0.65rem;
   max-width: none;
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -566,7 +567,7 @@ html:has(.sector-view) {
   }
 
   .sector-view__rail-index {
-    font-family: var(--font-mono), ui-monospace, monospace;
+    font-family: var(--font-pixel), ui-monospace, monospace;
     font-size: 0.6875rem;
     color: #8a8a84;
     min-width: 1.5rem;
@@ -652,7 +653,7 @@ html:has(.sector-view) {
 .resume-doc {
   max-width: 48rem;
   margin: 0 auto;
-  font-family: var(--font-sector-body), system-ui, sans-serif;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   line-height: 1.55;
 }
 
@@ -1204,7 +1205,7 @@ html:has(.sector-view) {
 .sector-stage__stats span {
   border: 1px solid color-mix(in oklab, var(--sector-accent) 40%, #333);
   padding: 0.25rem 0.45rem;
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-size: 0.6875rem;
   color: var(--sector-accent);
 }
@@ -1241,47 +1242,41 @@ html:has(.sector-view) {
   }
 }
 
-/* Pixel variant — one face across the wall (no mixed normal/pixel) */
-.sector-view--pixel {
-  --sector-pixel: var(--font-pixel), var(--font-mono), ui-monospace, monospace;
-  font-family: var(--sector-pixel);
-  letter-spacing: 0.02em;
-}
-
-.sector-view--pixel h1,
-.sector-view--pixel h2,
-.sector-view--pixel h3,
-.sector-view--pixel button,
-.sector-view--pixel a,
-.sector-view--pixel li,
-.sector-view--pixel p,
-.sector-view--pixel span,
-.sector-view--pixel .sector-stage__index,
-.sector-view--pixel .sector-stage__role,
-.sector-view--pixel .sector-stage__giant,
-.sector-view--pixel .sector-stage__meta,
-.sector-view--pixel .sector-stage__period,
-.sector-view--pixel .sector-stage__bio,
-.sector-view--pixel .sector-stage__body,
-.sector-view--pixel .sector-stage__tags li,
-.sector-view--pixel .sector-stage__stats span,
-.sector-view--pixel .sector-stage__cta,
-.sector-view--pixel .sector-stage__cta-secondary,
-.sector-view--pixel .sector-stage__links a,
-.sector-view--pixel .sector-project__plate,
-.sector-view--pixel .sector-project__body,
-.sector-view--pixel .sector-skill-group h3,
-.sector-view--pixel .sector-skill-group li,
-.sector-view--pixel .sector-view__rail-btn,
-.sector-view--pixel .sector-view__rail-index,
-.sector-view--pixel .view-chrome,
-.sector-view--pixel .view-chrome *,
-.sector-view--pixel .contact-list__label,
-.sector-view--pixel .contact-list__link {
+/* Pixel type face across the wall */
+.sector-view h1,
+.sector-view h2,
+.sector-view h3,
+.sector-view button,
+.sector-view a,
+.sector-view li,
+.sector-view p,
+.sector-view span,
+.sector-view .sector-stage__index,
+.sector-view .sector-stage__role,
+.sector-view .sector-stage__giant,
+.sector-view .sector-stage__meta,
+.sector-view .sector-stage__period,
+.sector-view .sector-stage__bio,
+.sector-view .sector-stage__body,
+.sector-view .sector-stage__tags li,
+.sector-view .sector-stage__stats span,
+.sector-view .sector-stage__cta,
+.sector-view .sector-stage__cta-secondary,
+.sector-view .sector-stage__links a,
+.sector-view .sector-project__plate,
+.sector-view .sector-project__body,
+.sector-view .sector-skill-group h3,
+.sector-view .sector-skill-group li,
+.sector-view .sector-view__rail-btn,
+.sector-view .sector-view__rail-index,
+.sector-view .view-chrome,
+.sector-view .view-chrome *,
+.sector-view .contact-list__label,
+.sector-view .contact-list__link {
   font-family: var(--sector-pixel);
 }
 
-.sector-view--pixel h1 {
+.sector-view h1 {
   font-size: clamp(2rem, 5.2vw, 3.6rem);
   line-height: 1.2;
   letter-spacing: 0.03em;
@@ -1289,47 +1284,47 @@ html:has(.sector-view) {
   text-wrap: balance;
 }
 
-.sector-view--pixel h2 {
+.sector-view h2 {
   font-size: clamp(1.45rem, 3.4vw, 2.45rem);
   line-height: 1.25;
   letter-spacing: 0.025em;
   text-wrap: balance;
 }
 
-.sector-view--pixel h3 {
+.sector-view h3 {
   font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   line-height: 1.35;
   letter-spacing: 0.02em;
 }
 
-.sector-view--pixel .sector-stage__giant {
+.sector-view .sector-stage__giant {
   font-size: clamp(3.25rem, 12vw, 6.5rem);
   letter-spacing: 0.04em;
   line-height: 0.95;
 }
 
-.sector-view--pixel .sector-stage__index,
-.sector-view--pixel .sector-stage__stats span,
-.sector-view--pixel .sector-stage__tags li,
-.sector-view--pixel .sector-skill-group h3,
-.sector-view--pixel .sector-view__rail-index {
+.sector-view .sector-stage__index,
+.sector-view .sector-stage__stats span,
+.sector-view .sector-stage__tags li,
+.sector-view .sector-skill-group h3,
+.sector-view .sector-view__rail-index {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.sector-view--pixel .sector-stage__bio,
-.sector-view--pixel .sector-stage__body,
-.sector-view--pixel .sector-project__body p {
+.sector-view .sector-stage__bio,
+.sector-view .sector-stage__body,
+.sector-view .sector-project__body p {
   font-size: 1.05rem;
   line-height: 1.75;
   letter-spacing: 0.03em;
   max-width: 58ch;
 }
 
-.sector-view--pixel .sector-stage__meta,
-.sector-view--pixel .sector-stage__period,
-.sector-view--pixel .sector-skill-group li,
-.sector-view--pixel .contact-list__link {
+.sector-view .sector-stage__meta,
+.sector-view .sector-stage__period,
+.sector-view .sector-skill-group li,
+.sector-view .contact-list__link {
   font-size: 0.95rem;
   line-height: 1.55;
   letter-spacing: 0.03em;
@@ -1416,7 +1411,7 @@ html:has(.sector-view) {
   flex-direction: column;
   justify-content: center;
   gap: 0.15rem;
-  font-family: var(--font-sector-body), system-ui, sans-serif;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-weight: 700;
   line-height: 1.15;
 }
@@ -1435,7 +1430,7 @@ html:has(.sector-view) {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 0.75rem;
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-pixel), ui-monospace, monospace;
   font-weight: 500;
   animation: sector-bar-label 420ms cubic-bezier(0.22, 1.2, 0.36, 1);
 }
@@ -1521,7 +1516,7 @@ html:has(.sector-view) {
   }
 
   .sector-lower-third__name {
-    font-family: var(--font-sector-display), system-ui, sans-serif;
+    font-family: var(--font-pixel), ui-monospace, monospace;
   }
 
   .sector-lower-third__chapter {
@@ -1534,21 +1529,21 @@ html:has(.sector-view) {
   }
 }
 
-/* Portaled lower-third sits on body — keep pixel face when Pixel view is active */
-body:has(.sector-view--pixel) .sector-lower-third,
-body:has(.sector-view--pixel) .sector-lower-third__copy,
-body:has(.sector-view--pixel) .sector-lower-third__name,
-body:has(.sector-view--pixel) .sector-lower-third__chapter,
-body:has(.sector-view--pixel) .sector-lower-third__resume {
-  font-family: var(--font-pixel), var(--font-mono), ui-monospace, monospace;
+/* Lower-third portals to body — keep pixel face */
+.sector-lower-third,
+.sector-lower-third__copy,
+.sector-lower-third__name,
+.sector-lower-third__chapter,
+.sector-lower-third__resume {
+  font-family: var(--font-pixel), ui-monospace, monospace;
   letter-spacing: 0.02em;
 }
 
-body:has(.sector-view--pixel) .sector-lower-third__name {
+.sector-lower-third__name {
   letter-spacing: 0.03em;
 }
 
-body:has(.sector-view--pixel) .sector-lower-third__chapter {
+.sector-lower-third__chapter {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }

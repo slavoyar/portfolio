@@ -4,7 +4,6 @@ import { LanguageToggleButton } from '@/components/HeaderActions';
 import { useClock } from '@/hooks/useClock';
 
 import { ResumeDownload } from './ResumeDownload';
-import { ViewSwitcher } from './ViewSwitcher';
 
 type ViewChromeProps = {
   showResume?: boolean;
@@ -15,8 +14,7 @@ export function ViewChrome({ showResume = true, showClock = true }: ViewChromePr
   const clock = useClock();
 
   return (
-    <div className='view-chrome view-chrome--dark'>
-      <ViewSwitcher className='view-chrome__switcher' />
+    <div className='view-chrome'>
       <div className='view-chrome__actions'>
         {showClock ? (
           <span className='view-chrome__clock' aria-live='polite'>

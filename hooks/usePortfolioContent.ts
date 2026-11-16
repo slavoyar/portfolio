@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import { JOB_IDS, PROJECT_IDS, SKILL_GROUPS, TECHNOLOGIES, type SkillGroupId } from '@/lib/portfolio';
+import { JOB_IDS, PROJECT_IDS, SKILL_GROUPS, type SkillGroupId, TECHNOLOGIES } from '@/lib/portfolio';
 
 export type PortfolioJob = {
   id: (typeof JOB_IDS)[number];
