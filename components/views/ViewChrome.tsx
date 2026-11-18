@@ -16,11 +16,7 @@ export function ViewChrome({ showResume = true, showClock = true }: ViewChromePr
   return (
     <div className='view-chrome'>
       <div className='view-chrome__actions'>
-        {showClock ? (
-          <span className='view-chrome__clock' aria-live='polite'>
-            {clock}
-          </span>
-        ) : null}
+        {showClock ? <span className='view-chrome__clock'>{clock}</span> : null}
         <LanguageToggleButton />
         {showResume ? <ResumeDownload className='view-chrome__resume' /> : null}
       </div>

@@ -2,6 +2,22 @@
 
 import { useEffect, useState } from 'react';
 
+/** Sticky chrome covers the top of the viewport. The active chapter is the one sitting just under it. */
+function chromeBottom() {
+  const chrome = document.querySelector('.view-chrome');
+  return chrome?.getBoundingClientRect().bottom ?? 0;
+}
+
+export function scrollToChapter(id: string) {
+  const el = document.getElementById(`chapter-${id}`);
+  if (!el) {
+    return;
+  }
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const top = el.getBoundingClientRect().top + window.scrollY - chromeBottom();
+  window.scrollTo({ top: Math.max(0, top), behavior: reduced ? 'auto' : 'smooth' });
+}
+
 export function useActiveChapter(chapterIds: readonly string[], enabled = true) {
   const [activeId, setActiveId] = useState(chapterIds[0] ?? '');
 
@@ -10,34 +26,44 @@ export function useActiveChapter(chapterIds: readonly string[], enabled = true) 
       return;
     }
 
-    const elements = chapterIds
-      .map((id) => document.getElementById(`chapter-${id}`))
-      .filter((el): el is HTMLElement => Boolean(el));
+    let frame = 0;
 
-    if (elements.length === 0) {
-      return;
-    }
+    const update = () => {
+      frame = 0;
+      const line = chromeBottom() + 8;
+      let current = chapterIds[0] ?? '';
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        const top = visible[0]?.target.id.replace(/^chapter-/, '');
-        if (top) {
-          setActiveId(top);
+      for (const id of chapterIds) {
+        const el = document.getElementById(`chapter-${id}`);
+        if (!el) {
+          continue;
         }
-      },
-      {
-        root: null,
-        threshold: [0.35, 0.55, 0.75],
-        rootMargin: '-10% 0px -35% 0px',
+        if (el.getBoundingClientRect().top <= line) {
+          current = id;
+        }
       }
-    );
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      setActiveId((prev) => (prev === current ? prev : current));
+    };
+
+    const onScroll = () => {
+      if (frame) {
+        return;
+      }
+      frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+    };
   }, [chapterIds, enabled]);
 
   return activeId;

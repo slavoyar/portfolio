@@ -18,7 +18,9 @@ html:has(.sector-view) {
     var(--sector-bg);
   color: var(--sector-ink);
   font-family: var(--sector-pixel);
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
 }
 
 .sector-glow-layer {
@@ -92,16 +94,9 @@ html:has(.sector-view) {
   padding: 2rem 1.25rem;
   border-top: 1px solid #222;
   overflow: hidden;
-  opacity: 0.35;
-  transform: translateY(0.9rem) scale(0.992);
-  clip-path: inset(3% 0 0 0);
   background:
     radial-gradient(ellipse 70% 55% at 85% 0%, var(--stage-wash), transparent 70%),
     radial-gradient(ellipse 45% 40% at 8% 90%, color-mix(in oklab, var(--stage-wash) 55%, transparent), transparent 65%);
-  transition:
-    opacity 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    clip-path 460ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .sector-view__stages > .sector-stage:first-child {
@@ -111,13 +106,6 @@ html:has(.sector-view) {
 
 .sector-view__stages > .sector-stage:last-child {
   padding-bottom: calc(2rem + var(--sector-bar-clearance));
-}
-
-.sector-stage.is-in,
-.sector-stage.is-live {
-  opacity: 1;
-  transform: none;
-  clip-path: inset(0 0 0 0);
 }
 
 .sector-stage.is-live {
@@ -550,15 +538,29 @@ html:has(.sector-view) {
     align-items: flex-start;
     gap: 0.5rem;
     min-height: 2.75rem;
-    padding: 0.55rem 0.35rem;
+    padding: 0.55rem 0.45rem;
     border: 0;
     border-radius: 0.35rem;
     background: transparent;
     color: var(--sector-muted);
     text-align: left;
-    font-size: 0.8125rem;
-    line-height: 1.3;
+    font-size: 1rem;
+    line-height: 1.35;
     cursor: pointer;
+    transition:
+      color 120ms ease,
+      background-color 120ms ease;
+  }
+
+  @media (hover: hover) {
+    .sector-view__rail-btn:hover {
+      color: var(--sector-ink);
+      background: color-mix(in oklab, var(--sector-accent) 12%, transparent);
+    }
+
+    .sector-view__rail-btn:hover .sector-view__rail-mark {
+      background: var(--sector-accent);
+    }
   }
 
   .sector-view__rail-btn:focus-visible {
@@ -568,9 +570,9 @@ html:has(.sector-view) {
 
   .sector-view__rail-index {
     font-family: var(--font-pixel), ui-monospace, monospace;
-    font-size: 0.6875rem;
-    color: #8a8a84;
-    min-width: 1.5rem;
+    font-size: 0.875rem;
+    color: #c4c4be;
+    min-width: 1.75rem;
   }
 
   .sector-view__rail-mark {
@@ -584,6 +586,7 @@ html:has(.sector-view) {
 
   .sector-view__rail-btn.is-active {
     color: var(--sector-ink);
+    background: color-mix(in oklab, var(--sector-accent) 18%, transparent);
   }
 
   .sector-view__rail-btn.is-active .sector-view__rail-index {
@@ -592,7 +595,6 @@ html:has(.sector-view) {
 
   .sector-view__rail-btn.is-active .sector-view__rail-mark {
     background: var(--sector-accent);
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--sector-accent) 25%, transparent);
   }
 
   .sector-stage__frame {
@@ -1210,38 +1212,6 @@ html:has(.sector-view) {
   color: var(--sector-accent);
 }
 
-.sector-stage__tags li {
-  transition: transform 160ms ease, background-color 160ms ease;
-}
-
-.sector-stage.is-live .sector-stage__tags li {
-  animation: sector-tag 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-.sector-stage.is-live .sector-stage__tags li:nth-child(2) {
-  animation-delay: 60ms;
-}
-.sector-stage.is-live .sector-stage__tags li:nth-child(3) {
-  animation-delay: 120ms;
-}
-.sector-stage.is-live .sector-stage__tags li:nth-child(4) {
-  animation-delay: 180ms;
-}
-.sector-stage.is-live .sector-stage__tags li:nth-child(5) {
-  animation-delay: 240ms;
-}
-
-@keyframes sector-tag {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 /* Pixel type face across the wall */
 .sector-view h1,
 .sector-view h2,
@@ -1277,29 +1247,29 @@ html:has(.sector-view) {
 }
 
 .sector-view h1 {
-  font-size: clamp(2rem, 5.2vw, 3.6rem);
-  line-height: 1.2;
-  letter-spacing: 0.03em;
+  font-size: clamp(2.25rem, 5.2vw, 3.6rem);
+  line-height: 1.15;
+  letter-spacing: 0;
   max-width: 16ch;
   text-wrap: balance;
 }
 
 .sector-view h2 {
-  font-size: clamp(1.45rem, 3.4vw, 2.45rem);
-  line-height: 1.25;
-  letter-spacing: 0.025em;
+  font-size: clamp(1.6rem, 3.4vw, 2.45rem);
+  line-height: 1.2;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
 .sector-view h3 {
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-  line-height: 1.35;
-  letter-spacing: 0.02em;
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  line-height: 1.3;
+  letter-spacing: 0;
 }
 
 .sector-view .sector-stage__giant {
   font-size: clamp(3.25rem, 12vw, 6.5rem);
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   line-height: 0.95;
 }
 
@@ -1308,16 +1278,16 @@ html:has(.sector-view) {
 .sector-view .sector-stage__tags li,
 .sector-view .sector-skill-group h3,
 .sector-view .sector-view__rail-index {
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .sector-view .sector-stage__bio,
 .sector-view .sector-stage__body,
 .sector-view .sector-project__body p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  letter-spacing: 0.03em;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  letter-spacing: 0;
   max-width: 58ch;
 }
 
@@ -1325,9 +1295,9 @@ html:has(.sector-view) {
 .sector-view .sector-stage__period,
 .sector-view .sector-skill-group li,
 .sector-view .contact-list__link {
-  font-size: 0.95rem;
-  line-height: 1.55;
-  letter-spacing: 0.03em;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  letter-spacing: 0;
 }
 
 .sector-stage__photo-frame {
@@ -1401,7 +1371,6 @@ html:has(.sector-view) {
   padding: 0.65rem 0.85rem;
   transform: scaleY(var(--bar-scale));
   transform-origin: bottom center;
-  will-change: transform;
 }
 
 .sector-lower-third__copy {
@@ -1432,7 +1401,7 @@ html:has(.sector-view) {
   font-size: 0.75rem;
   font-family: var(--font-pixel), ui-monospace, monospace;
   font-weight: 500;
-  animation: sector-bar-label 420ms cubic-bezier(0.22, 1.2, 0.36, 1);
+  animation: sector-bar-label 420ms ease-out;
 }
 
 @keyframes sector-bar-label {
@@ -1536,15 +1505,10 @@ html:has(.sector-view) {
 .sector-lower-third__chapter,
 .sector-lower-third__resume {
   font-family: var(--font-pixel), ui-monospace, monospace;
-  letter-spacing: 0.02em;
-}
-
-.sector-lower-third__name {
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
 }
 
 .sector-lower-third__chapter {
-  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -1586,9 +1550,9 @@ html:has(.sector-view) {
     min-height: auto;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    opacity: 1;
-    transform: none;
-    clip-path: none;
+  }
+
+  .sector-view__rail-btn {
     transition: none;
   }
 
@@ -1607,7 +1571,6 @@ html:has(.sector-view) {
   .sector-stage__field b,
   .sector-stage__field em,
   .sector-stage__field span,
-  .sector-stage.is-live .sector-stage__tags li,
   .sector-lower-third__chapter {
     animation: none;
   }
