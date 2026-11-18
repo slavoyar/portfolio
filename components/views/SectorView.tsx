@@ -6,8 +6,7 @@ import { type CSSProperties, useEffect, useMemo, useState } from 'react';
 
 import photo from '@/assets/main.webp';
 import { ContactLinks } from '@/components/ContactLinks';
-import { useActiveChapter } from '@/hooks/useActiveChapter';
-import { useInViewChapters } from '@/hooks/useInViewChapters';
+import { scrollToChapter, useActiveChapter } from '@/hooks/useActiveChapter';
 import { usePortfolioContent } from '@/hooks/usePortfolioContent';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import { CHAPTER_FIELDS, CHAPTER_IDS, type ChapterId, yearFromPeriod } from '@/lib/portfolio';
@@ -20,6 +19,15 @@ const GlowCursor = dynamic(() => import('@/components/effects/GlowCursor'), { ss
 const SectorBelowFold = dynamic(() => import('./SectorBelowFold').then((m) => ({ default: m.SectorBelowFold })), {
   loading: () => null,
 });
+
+function jobRailLabel(id: string, content: ReturnType<typeof usePortfolioContent>) {
+  const job = content.jobs.find((item) => item.id === id);
+  if (!job) {
+    return id;
+  }
+  const duplicated = content.jobs.filter((item) => item.name === job.name).length > 1;
+  return duplicated ? `${job.name} ${yearFromPeriod(job.period)}` : job.name;
+}
 
 function labelForChapter(id: string, content: ReturnType<typeof usePortfolioContent>) {
   if (id === 'intro') {
@@ -34,23 +42,13 @@ function labelForChapter(id: string, content: ReturnType<typeof usePortfolioCont
   if (id === 'education') {
     return content.educationTitle;
   }
-  return content.jobs.find((job) => job.id === id)?.name ?? content.role;
-}
-
-function scrollToChapter(id: string) {
-  const el = document.getElementById(`chapter-${id}`);
-  if (!el) {
-    return;
-  }
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  return content.jobs.some((job) => job.id === id) ? jobRailLabel(id, content) : content.role;
 }
 
 export function SectorView() {
   const content = usePortfolioContent();
   const chapterIds = useMemo(() => [...CHAPTER_IDS], []);
   const active = useActiveChapter(chapterIds);
-  const seen = useInViewChapters(chapterIds);
   const progress = useScrollProgress();
   const progressPct = Math.round(progress * 100);
   const [barLabel, setBarLabel] = useState(content.role);
@@ -89,8 +87,7 @@ export function SectorView() {
     setBarLabel(labelForChapter(active, content));
   }, [active, content]);
 
-  const stageClass = (id: string) =>
-    ['sector-stage', seen[id] ? 'is-in' : '', active === id ? 'is-live' : ''].filter(Boolean).join(' ');
+  const stageClass = (id: string) => ['sector-stage', active === id ? 'is-live' : ''].filter(Boolean).join(' ');
 
   const stageStyle = (id: ChapterId): CSSProperties =>
     ({
@@ -108,11 +105,11 @@ export function SectorView() {
             secondaryColor='#6b8f00'
             theme='dark'
             quality='low'
-            intensity={1.05}
+            intensity={0.38}
             trailWidth={2.4}
             linger={1.1}
-            glow={0.95}
-            hotspot={0.65}
+            glow={0.28}
+            hotspot={0.15}
             followSpeed={0.55}
             clickBurst={false}
             maxDevicePixelRatio={1.25}
@@ -150,7 +147,7 @@ export function SectorView() {
                     ? content.chapters.skills
                     : id === 'education'
                       ? content.chapters.education
-                      : (content.jobs.find((job) => job.id === id)?.name ?? id);
+                      : jobRailLabel(id, content);
 
             return (
               <li key={id}>

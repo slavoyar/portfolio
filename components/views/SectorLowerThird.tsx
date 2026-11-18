@@ -75,6 +75,9 @@ export function SectorLowerThird({ name, chapterLabel }: SectorLowerThirdProps) 
       if (Math.abs(pullRef.current) < 0.08 && Math.abs(pullVelRef.current) < 0.08) {
         pullRef.current = 0;
         pullVelRef.current = 0;
+        paint();
+        rafRef.current = 0;
+        return;
       }
 
       paint();
@@ -85,14 +88,20 @@ export function SectorLowerThird({ name, chapterLabel }: SectorLowerThirdProps) 
       const y = window.scrollY;
       const dy = y - lastScrollRef.current;
       lastScrollRef.current = y;
+      if (dy === 0) {
+        return;
+      }
       // Touch scrolls send large deltas — keep the tug gentle.
       pullRef.current = Math.max(-28, Math.min(32, pullRef.current + dy * 0.22));
       pullVelRef.current *= 0.25;
+      if (!rafRef.current) {
+        lastTime = performance.now();
+        rafRef.current = window.requestAnimationFrame(tick);
+      }
     };
 
     paint();
     window.addEventListener('scroll', onScroll, { passive: true });
-    rafRef.current = window.requestAnimationFrame(tick);
 
     return () => {
       window.removeEventListener('scroll', onScroll);
